@@ -1,4 +1,4 @@
-package lhc.highlightview;
+package com.lhc.highlight;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,9 +14,9 @@ import android.widget.FrameLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import lhc.highlightview.position.IPositionStrategy;
-import lhc.highlightview.shape.IHighLight;
-import lhc.highlightview.shape.RectLightShape;
+import com.lhc.highlight.position.IPositionStrategy;
+import com.lhc.highlight.shape.IHighLight;
+import com.lhc.highlight.shape.RectLightShape;
 
 /**
  * 作者：LHC on 2017/6/20 09:52

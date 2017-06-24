@@ -1,8 +1,8 @@
-package lhc.highlightview.position;
+package com.lhc.highlight.position;
 
 import android.graphics.RectF;
 
-import lhc.highlightview.HighLight;
+import com.lhc.highlight.HighLight;
 
 /**
  * 作者：LHC on 2017/6/20 10:48

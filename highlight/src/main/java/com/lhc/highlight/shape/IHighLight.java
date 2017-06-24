@@ -1,8 +1,8 @@
-package lhc.highlightview.shape;
+package com.lhc.highlight.shape;
 
 import android.graphics.Bitmap;
 
-import lhc.highlightview.HighLight;
+import com.lhc.highlight.HighLight;
 
 /**
  * 作者：LHC on 2017/6/20 11:07

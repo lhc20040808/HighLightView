@@ -1,4 +1,4 @@
-package lhc.highlightview.position;
+package com.lhc.highlight.position;
 
 /**
  * 作者：LHC on 2017/6/20 10:50

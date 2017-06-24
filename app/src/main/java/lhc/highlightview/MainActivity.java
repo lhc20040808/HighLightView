@@ -3,8 +3,9 @@ package lhc.highlightview;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import lhc.highlightview.position.leftPosStrategy;
-import lhc.highlightview.shape.RectLightShape;
+import com.lhc.highlight.HighLight;
+import com.lhc.highlight.position.leftPosStrategy;
+import com.lhc.highlight.shape.RectLightShape;
 
 public class MainActivity extends AppCompatActivity {
 
