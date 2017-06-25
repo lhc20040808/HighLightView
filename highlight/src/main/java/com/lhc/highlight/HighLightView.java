@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 作者：LHC on 2017/6/20 09:52
- * 描述：
+ * 描述：高亮布局
  */
 public class HighLightView extends FrameLayout {
 
@@ -76,18 +76,18 @@ public class HighLightView extends FrameLayout {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        recyleBitmap(mMaskBitmap);
-        recyleBitmap(mLightBitmap);
+        recyclerBitmap(mMaskBitmap);
+        recyclerBitmap(mLightBitmap);
     }
 
     private void buildMask() {
-        recyleBitmap(mMaskBitmap);
+        recyclerBitmap(mMaskBitmap);
         mMaskBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(mMaskBitmap);
         canvas.drawColor(maskColor);
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 
-        recyleBitmap(mLightBitmap);
+        recyclerBitmap(mLightBitmap);
         mLightBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_4444);
 
         if (isNext) {
@@ -103,26 +103,7 @@ public class HighLightView extends FrameLayout {
         canvas.drawBitmap(mLightBitmap, 0, 0, mPaint);
     }
 
-    private void updateTipPos() {
-        if (isNext) {
-            if (nowPos < 0 || nowPos > mHighLightViews.size()) {
-                nowPos = 0;
-            } else if (nowPos == mHighLightViews.size() - 1) {
-
-            }
-        } else {
-            for (int i = 0, n = getChildCount(); i < n; i++) {
-                View view = getChildAt(i);
-                HighLight.ViewInfo viewPosInfo = mHighLightViews.get(i);
-
-                LayoutParams lp = (LayoutParams) buildLayoutParams(view, viewPosInfo);
-                if (lp == null) continue;
-                view.setLayoutParams(lp);
-            }
-        }
-    }
-
-    private void recyleBitmap(Bitmap bitmap) {
+    private void recyclerBitmap(Bitmap bitmap) {
         if (bitmap != null && !bitmap.isRecycled()) {
             bitmap.recycle();
             bitmap = null;

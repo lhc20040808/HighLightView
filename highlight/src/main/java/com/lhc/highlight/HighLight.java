@@ -20,14 +20,14 @@ import com.lhc.highlight.shape.RectLightShape;
 
 /**
  * 作者：LHC on 2017/6/20 09:52
- * 描述：
+ * 描述：高亮布局辅助类
  */
 public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
     private static final String FRAGMENT_CON = "NoSaveStateFrameLayout";
     private boolean isShowAfterInit = false;
     private View mAnchor;
     private Context mContext;
-    private List<ViewInfo> mHightLightViews = new ArrayList<>();
+    private List<ViewInfo> mHighLightViews = new ArrayList<>();
     private int maskColor = 0xCC000000;
     private boolean isNext;
     private HighLightView mHighLightView;
@@ -50,7 +50,7 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
     }
 
     private void calViewLocation() {
-        for (ViewInfo viewInfo : mHightLightViews) {
+        for (ViewInfo viewInfo : mHighLightViews) {
             View parent = viewInfo.parent;
             viewInfo.rectF = new RectF(getLocationInWindow(parent, viewInfo.highLightView));
             MarginInfo marginInfo = new MarginInfo();
@@ -79,7 +79,7 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         viewInfo.posStrategy = posStrategy;
         viewInfo.highLight = highLightShape == null ? new RectLightShape(0, 0) : highLightShape;
 
-        mHightLightViews.add(viewInfo);
+        mHighLightViews.add(viewInfo);
         return this;
     }
 
@@ -116,10 +116,10 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
     }
 
     public void showHighLight() {
-        if (mHightLightViews.isEmpty()) {
+        if (mHighLightViews.isEmpty()) {
             return;
         }
-        HighLightView highLightView = new HighLightView(mContext, this, mHightLightViews, maskColor, isNext);
+        HighLightView highLightView = new HighLightView(mContext, this, mHighLightViews, maskColor, isNext);
         if (mAnchor instanceof FrameLayout) {
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             ((ViewGroup) mAnchor).addView(highLightView, lp);

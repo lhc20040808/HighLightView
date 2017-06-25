@@ -7,3 +7,6 @@
 /build
 /captures
 .externalNativeBuild
+/.idea
+highlight/libs/
+highlight/src/main/res/drawable/
