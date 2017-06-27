@@ -50,8 +50,6 @@ public class RectLightShape extends BaseHighLight {
 
         canvas.drawRoundRect(viewInfo.rectF, radius, radius, paint);
 
-        int tmpOffSet = Math.abs(offSet);
-
         RectF rectF = new RectF(viewInfo.rectF);
         rectF.left -= DEFAULT_DASH_OFFSET;
         rectF.top -= DEFAULT_DASH_OFFSET;
