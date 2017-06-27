@@ -120,6 +120,7 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         HighLightView highLightView = new HighLightView(mContext, this, mHighLightViews, maskColor, isNext);
+        highLightView.setId(R.id.high_light_view);
         if (mAnchor instanceof FrameLayout) {
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             ((ViewGroup) mAnchor).addView(highLightView, lp);
@@ -138,7 +139,11 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         highLightView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                remove();
+                if (isNext) {
+                    mHighLightView.addViewForTips();
+                } else {
+                    remove();
+                }
             }
         });
 
