@@ -15,7 +15,8 @@ import com.lhc.highlight.HighLight;
  * 描述：矩形形状
  */
 public class RectLightShape extends BaseHighLight {
-    private int offSet = 10;
+    private final static int DEFAULT_DASH_OFFSET = 8;
+    private int offSet;
     private float radius;
 
     public RectLightShape(int offSet, float radius) {
@@ -49,11 +50,13 @@ public class RectLightShape extends BaseHighLight {
 
         canvas.drawRoundRect(viewInfo.rectF, radius, radius, paint);
 
+        int tmpOffSet = Math.abs(offSet);
+
         RectF rectF = new RectF(viewInfo.rectF);
-        rectF.left -= offSet;
-        rectF.top -= offSet;
-        rectF.right += offSet;
-        rectF.bottom += offSet;
+        rectF.left -= DEFAULT_DASH_OFFSET;
+        rectF.top -= DEFAULT_DASH_OFFSET;
+        rectF.right += DEFAULT_DASH_OFFSET;
+        rectF.bottom += DEFAULT_DASH_OFFSET;
 
         paint.setStrokeWidth(5);
         paint.setColor(Color.WHITE);
