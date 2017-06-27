@@ -18,19 +18,21 @@ public class RectLightShape extends BaseHighLight {
     private int offSet = 10;
     private float radius;
 
-    public RectLightShape(float offSetX, float offSetY) {
-        this(offSetX, offSetY, 0);
+    public RectLightShape(int offSet, float radius) {
+        this(offSet, radius, 0);
     }
 
-    public RectLightShape(float offSetX, float offSetY, float radius) {
+    public RectLightShape(int offSet, float radius, float blurRadius) {
+        this(offSet, radius, blurRadius, 0, 0);
+    }
+
+    public RectLightShape(int offSet, float radius, float blurRadius, float offSetX, float offSetY) {
         super(offSetX, offSetY);
+        this.offSet = offSet;
         this.radius = radius;
+        this.blurRadius = blurRadius;
     }
 
-    public RectLightShape(float offSetX, float offSetY, float blurRadius, float radius) {
-        super(offSetX, offSetY, blurRadius);
-        this.radius = radius;
-    }
 
     @Override
     protected void drawShape(Bitmap bitmap, HighLight.ViewInfo viewInfo) {
@@ -40,6 +42,11 @@ public class RectLightShape extends BaseHighLight {
         if (blurRadius > 0) {
             paint.setMaskFilter(new BlurMaskFilter(blurRadius, BlurMaskFilter.Blur.SOLID));
         }
+        viewInfo.rectF.left -= offSet;
+        viewInfo.rectF.top -= offSet;
+        viewInfo.rectF.right += offSet;
+        viewInfo.rectF.bottom += offSet;
+
         canvas.drawRoundRect(viewInfo.rectF, radius, radius, paint);
 
         RectF rectF = new RectF(viewInfo.rectF);
@@ -51,7 +58,7 @@ public class RectLightShape extends BaseHighLight {
         paint.setStrokeWidth(5);
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setPathEffect(new DashPathEffect(new float[]{4, 4}, 0));
+        paint.setPathEffect(new DashPathEffect(new float[]{8, 3}, 0));
         canvas.drawRoundRect(rectF, radius, radius, paint);
     }
 }

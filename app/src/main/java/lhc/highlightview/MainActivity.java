@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         HighLight highLight = new HighLight(this)
-                .addHighLight(R.id.tv_left, R.layout.info_gravity_left_down, new leftPosStrategy(40), new RectLightShape(0, 0, 10))
-                .addHighLight(R.id.tv_left_1, R.layout.info_gravity_left_down, new leftPosStrategy(40), new RectLightShape(0, 0, 10))
+                .addHighLight(R.id.tv_left, R.layout.info_gravity_left_down, new leftPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_left_1, R.layout.info_gravity_left_down, new leftPosStrategy(40), new RectLightShape(10, 10))
                 .showInSequence()
                 .show();
     }
