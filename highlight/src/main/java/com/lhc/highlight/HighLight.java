@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.lhc.highlight.position.IPositionStrategy;
 import com.lhc.highlight.shape.IHighLight;
 import com.lhc.highlight.shape.RectLightShape;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 作者：LHC on 2017/6/20 09:52
@@ -31,6 +31,7 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
     private int maskColor = 0xCC000000;
     private boolean isNext;
     private HighLightView mHighLightView;
+    private OnCloseListener onCloseListener;
 
     public HighLight(Context context) {
         this.mContext = context;
@@ -158,6 +159,10 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         ViewGroup viewGroup = (ViewGroup) mHighLightView.getParent();
         viewGroup.removeView(mHighLightView);
         mHighLightView = null;
+
+        if (onCloseListener != null) {
+            onCloseListener.onClose();
+        }
     }
 
     private void checkAnchor() {
@@ -220,4 +225,11 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         public float bottomMargin;
     }
 
+    interface OnCloseListener {
+        void onClose();
+    }
+
+    public void setOnCloseListener(OnCloseListener listener) {
+        this.onCloseListener = listener;
+    }
 }
