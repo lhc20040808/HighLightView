@@ -236,7 +236,7 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         public float bottomMargin;
     }
 
-    interface OnCloseListener {
+    public interface OnCloseListener {
         void onClose();
     }
 
