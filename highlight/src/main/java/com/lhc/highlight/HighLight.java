@@ -23,6 +23,10 @@ import java.util.List;
  * 描述：高亮布局辅助类
  */
 public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
+
+    public static final int DISMISS = 0;
+    public static final int SHOW = 1;
+
     private static final String FRAGMENT_CON = "NoSaveStateFrameLayout";
     private boolean isShowAfterInit = false;
     private View mAnchor;
@@ -32,6 +36,8 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
     private boolean isNext;
     private HighLightView mHighLightView;
     private OnCloseListener onCloseListener;
+    private int status = DISMISS;
+
 
     public HighLight(Context context) {
         this.mContext = context;
@@ -120,6 +126,9 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         if (mHighLightViews.isEmpty()) {
             return;
         }
+
+        status = SHOW;
+
         HighLightView highLightView = new HighLightView(mContext, this, mHighLightViews, maskColor, isNext);
         highLightView.setId(R.id.high_light_view);
         if (mAnchor instanceof FrameLayout) {
@@ -159,6 +168,8 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         ViewGroup viewGroup = (ViewGroup) mHighLightView.getParent();
         viewGroup.removeView(mHighLightView);
         mHighLightView = null;
+
+        status = DISMISS;
 
         if (onCloseListener != null) {
             onCloseListener.onClose();
@@ -231,5 +242,9 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
 
     public void setOnCloseListener(OnCloseListener listener) {
         this.onCloseListener = listener;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }
