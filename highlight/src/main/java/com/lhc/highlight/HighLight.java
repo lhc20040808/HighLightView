@@ -240,8 +240,9 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
         void onClose();
     }
 
-    public void setOnCloseListener(OnCloseListener listener) {
+    public HighLight setOnCloseListener(OnCloseListener listener) {
         this.onCloseListener = listener;
+        return this;
     }
 
     public int getStatus() {
