@@ -61,7 +61,7 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
             View parent = viewInfo.parent;
             viewInfo.rectF = new RectF(getLocationInWindow(parent, viewInfo.highLightView));
             MarginInfo marginInfo = new MarginInfo();
-            viewInfo.posStrategy.getPos(parent.getWidth() - viewInfo.rectF.right, parent.getHeight() - viewInfo.rectF.height()
+            viewInfo.posStrategy.getPos(parent.getWidth() - viewInfo.rectF.right, parent.getHeight() - viewInfo.rectF.bottom
                     , viewInfo.rectF, marginInfo);
             viewInfo.marginInfo = marginInfo;
         }
