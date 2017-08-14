@@ -16,7 +16,7 @@ public class topCenterPosStrategy extends BasePosStrategy {
 
     @Override
     public void getPos(float rightMargin, float bottomMargin, RectF viewRectF, HighLight.MarginInfo marginInfo) {
-        marginInfo.leftMargin = (viewRectF.right + rightMargin) / 2;
+        marginInfo.leftMargin = 0;
         marginInfo.bottomMargin = bottomMargin + viewRectF.height() + offSet;
     }
 }
