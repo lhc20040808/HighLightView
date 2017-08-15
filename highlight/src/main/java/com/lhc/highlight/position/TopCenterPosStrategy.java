@@ -5,18 +5,18 @@ import android.graphics.RectF;
 import com.lhc.highlight.HighLight;
 
 /**
- * 作者：LHC on 2017/6/20 10:56
+ * 作者：LHC on 2017/6/20 10:54
  * 描述：
  */
-public class rightPosStategy extends BasePosStrategy {
+public class TopCenterPosStrategy extends BasePosStrategy {
 
-    public rightPosStategy(float offSet) {
+    public TopCenterPosStrategy(float offSet) {
         super(offSet);
     }
 
     @Override
     public void getPos(float rightMargin, float bottomMargin, RectF viewRectF, HighLight.MarginInfo marginInfo) {
-        marginInfo.leftMargin = viewRectF.right + offSet;
-        marginInfo.topMargin = viewRectF.top;
+        marginInfo.leftMargin = 0;
+        marginInfo.bottomMargin = bottomMargin + viewRectF.height() + offSet;
     }
 }
