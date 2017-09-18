@@ -78,20 +78,19 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
     public HighLight addHighLight(View view, int decorLayoutId, IPositionStrategy posStrategy, IHighLight highLightShape) {
         checkAnchor();
 
-        if (view == null) {
-            return this;
+        if (view != null) {
+            View parent = mAnchor;
+
+            ViewInfo viewInfo = new ViewInfo();
+            viewInfo.parent = parent;
+            viewInfo.decorLayoutId = decorLayoutId;
+            viewInfo.highLightView = view;
+            viewInfo.posStrategy = posStrategy;
+            viewInfo.highLight = highLightShape == null ? new RectLightShape(0, 0) : highLightShape;
+
+            mHighLightViews.add(viewInfo);
         }
 
-        View parent = mAnchor;
-
-        ViewInfo viewInfo = new ViewInfo();
-        viewInfo.parent = parent;
-        viewInfo.decorLayoutId = decorLayoutId;
-        viewInfo.highLightView = view;
-        viewInfo.posStrategy = posStrategy;
-        viewInfo.highLight = highLightShape == null ? new RectLightShape(0, 0) : highLightShape;
-
-        mHighLightViews.add(viewInfo);
         return this;
     }
 
