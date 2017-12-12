@@ -207,6 +207,11 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
             return result;
         }
         while (tmp != decorView && tmp != parent) {
+
+            if (tmp == null) {
+                break;
+            }
+
             tmp.getHitRect(tmpRect);
             if (!tmp.getClass().equals(FRAGMENT_CON)) {
                 result.left += tmpRect.left;
