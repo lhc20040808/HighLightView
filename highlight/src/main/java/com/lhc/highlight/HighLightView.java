@@ -19,8 +19,8 @@ import java.util.List;
  * 作者：LHC on 2017/6/20 09:52
  * 描述：高亮布局
  */
- class HighLightView extends FrameLayout {
-    private final static String TAG = "test";
+class HighLightView extends FrameLayout {
+    private final static String TAG = "HighLightView";
     private List<HighLight.ViewInfo> mHighLightViews;
     private int maskColor;
     private Paint mPaint;
@@ -61,7 +61,7 @@ import java.util.List;
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         if (changed || isNext) {
-            Log.d(TAG,"HighLightView onLayout");
+            Log.d(TAG, "HighLightView onLayout");
             buildMask();
         }
     }
@@ -84,17 +84,21 @@ import java.util.List;
     }
 
     private void buildMask() {
+        int width = getMeasuredWidth();
+        int height = getMeasuredHeight();
+        Log.d(TAG, "width:" + width + " height:" + height);
+
         recyclerBitmap(mMaskBitmap);
-        mMaskBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_4444);
+        mMaskBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(mMaskBitmap);
         canvas.drawColor(maskColor);
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 
         recyclerBitmap(mLightBitmap);
-        mLightBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_4444);
+        mLightBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444);
 
         if (isNext) {
-            addTipShape(mLightBitmap,nowNextViewInfo);
+            addTipShape(mLightBitmap, nowNextViewInfo);
         } else {
             for (HighLight.ViewInfo viewInfo : mHighLightViews) {
                 addTipShape(mLightBitmap, viewInfo);
