@@ -24,5 +24,30 @@ public class MainActivity extends AppCompatActivity {
                 .addHighLight(R.id.tv_right_bottom, R.layout.info_gravity_left_down, new LeftPosStrategy(40), new RectLightShape(10, 10))
                 .showInSequence()
                 .show();
+
+        HighLight highLight1 = new HighLight(this)
+                .addHighLight(R.id.tv_left_top, R.layout.info_gravity_left_down, new RightPosStrategy(40), new RectLightShape(-5, 30))
+                .addHighLight(R.id.tv_right_top, R.layout.info_gravity_left_down, new BottomPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_left_bottom, R.layout.info_gravity_left_down, new TopPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_right_bottom, R.layout.info_gravity_left_down, new LeftPosStrategy(40), new RectLightShape(10, 10))
+                .showInSequence()
+                .show();
+
+
+        HighLight highLight2 = new HighLight(this)
+                .addHighLight(R.id.tv_left_top, R.layout.info_gravity_left_down, new RightPosStrategy(40), new RectLightShape(-5, 30))
+                .addHighLight(R.id.tv_right_top, R.layout.info_gravity_left_down, new BottomPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_left_bottom, R.layout.info_gravity_left_down, new TopPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_right_bottom, R.layout.info_gravity_left_down, new LeftPosStrategy(40), new RectLightShape(10, 10))
+                .showInSequence()
+                .show();
+
+        HighLight highLight3 = new HighLight(this)
+                .addHighLight(R.id.tv_left_top, R.layout.info_gravity_left_down, new RightPosStrategy(40), new RectLightShape(-5, 30))
+                .addHighLight(R.id.tv_right_top, R.layout.info_gravity_left_down, new BottomPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_left_bottom, R.layout.info_gravity_left_down, new TopPosStrategy(40), new RectLightShape(10, 10))
+                .addHighLight(R.id.tv_right_bottom, R.layout.info_gravity_left_down, new LeftPosStrategy(40), new RectLightShape(10, 10))
+                .showInSequence()
+                .show();
     }
 }

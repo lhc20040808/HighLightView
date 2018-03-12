@@ -133,6 +133,11 @@ public class HighLight implements ViewTreeObserver.OnGlobalLayoutListener {
 
         status = SHOW;
 
+        View view = ((ViewGroup) mAnchor).findViewById(R.id.high_light_view);
+        if (view != null) {
+            ((ViewGroup) mAnchor).removeView(view);
+        }
+
         HighLightView highLightView = new HighLightView(mContext, this, mHighLightViews, maskColor, isNext);
         highLightView.setId(R.id.high_light_view);
         if (mAnchor instanceof FrameLayout) {
